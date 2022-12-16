@@ -1,24 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
 
 function App() {
+
+  const goods =[
+    {
+      id:1,
+      title:"boots",
+      describe: "Red boots"
+    },
+    {
+      id:2,
+      title:"convers",
+      describe: "Green boots"
+    },
+    {
+      id:3,
+      title:"Speed top",
+      describe: "Gold boots"
+    },
+
+
+  ]
+
+  const logo = "MONOTYPE"
+  const isAuth = true;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      {
+        !isAuth ? (
+          <h1>Get register</h1>
+        ) : (
+          <>
+                <Header 
+                greet="Hello world" 
+                name="Alex" 
+                logotype= {logo}
+                />
+
+                {
+                  goods.map(item => <Card base={item} key={item.id}/>)
+                }
+
+
+          </>
+        )
+      }
+
+
+    </React.Fragment>
   );
 }
 
